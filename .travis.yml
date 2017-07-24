@@ -86,7 +86,6 @@ install:
        rm -f $HOME/.cabal/bin/stack;
        echo "stack is located at $(which stack)";
        stack --version;
-       cabal install Cabal --global &&
        rm -f $(stack --stack-yaml=$STACK_YAML path --dist-dir)/stack-*.tar.gz &&
        stack --system-ghc --stack-yaml=$STACK_YAML sdist --pvp-bounds=both &&
        tar xf $(stack --system-ghc --compiler=ghc-$GHCVER path --dist-dir)/stack-*.tar.gz --wildcards --strip-components=1 '*/stack.cabal' &&
