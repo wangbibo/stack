@@ -62,6 +62,7 @@ import qualified    Data.Yaml as Yaml
 import              Distribution.System (OS (Linux), Arch (..), Platform (..))
 import qualified    Distribution.System as Cabal
 import              Distribution.Text (simpleParse)
+import              Distribution.Version (mkVersion')
 import              Lens.Micro (set)
 import              Network.HTTP.Simple (getResponseBody, httpLBS, withResponse, getResponseStatusCode)
 import              Network.HTTP.Download
@@ -1904,4 +1905,4 @@ getDownloadVersion (StackReleaseInfo val) = do
     parseVersion $ T.drop 1 rawName
 
 stackVersion :: Version
-stackVersion = fromCabalVersion Meta.version
+stackVersion = fromCabalVersion (mkVersion' Meta.version)
